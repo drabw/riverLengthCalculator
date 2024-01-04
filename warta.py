@@ -41,8 +41,8 @@ def calculateDistanceOfSegment2(coordinates):
 
         distance = distance + R * c
         
-        lat.append(lat1)
-        lon.append(lon1)
+        lat.append(coordinates[x][0])
+        lon.append(coordinates[x][1])
         
     return distance
 
@@ -66,8 +66,5 @@ fig, ax = plt.subplots()
 ax.scatter(lat, lon)
 for i, txt in enumerate(segmentsLength):
     ax.annotate(str(int(txt)), (latOfFirstPointInSegment[i], lonOfFirstPointInSegment[i]))
-print("segmentsLength = " + str(segmentsLength))
-print("latOfFirstPointInSegment = " + str(latOfFirstPointInSegment))
-print("lonOfFirstPointInSegment = " + str(lonOfFirstPointInSegment))
-plt.show()
 
+plt.show()

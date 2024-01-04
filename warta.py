@@ -17,7 +17,9 @@ lon = []
 segmentsLength = []
 latOfFirstPointInSegment = []
 lonOfFirstPointInSegment = []
-def calculateDistanceOfSegment(coordinates, currentLength):
+
+
+def calculateDistanceOfSegment(coordinates):
     distance = 0.0
     
     for x in range(0,(len(coordinates)-1)):
@@ -52,7 +54,7 @@ for segment in river.members():
     if(segment.id() == 6124894):
         break
     segmentsLength.append(totalDistance)
-    distanceForSegment = calculateDistanceOfSegment(segment.geometry()["coordinates"], segmentsLength)
+    distanceForSegment = calculateDistanceOfSegment(segment.geometry()["coordinates"])
     distanceForSegment2 = calculateDistanceOfSegment2(segment.geometry()["coordinates"])
     totalDistance =  totalDistance + distanceForSegment 
     totalDistance2 = totalDistance2 + distanceForSegment2
@@ -65,6 +67,6 @@ print(totalDistance2)
 fig, ax = plt.subplots()  
 ax.scatter(lat, lon)
 for i, txt in enumerate(segmentsLength):
-    ax.annotate(str(int(txt)), (latOfFirstPointInSegment[i], lonOfFirstPointInSegment[i]))
+    ax.annotate(str(round(txt,2)), (latOfFirstPointInSegment[i], lonOfFirstPointInSegment[i]))
 
 plt.show()
